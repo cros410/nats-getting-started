@@ -2,7 +2,7 @@ const { connect, StringCodec } = require('nats')
 
 const main = async () => {
   const nc = await connect({ servers: 'localhost:4222' })
-  console.log('conect')
+  console.log('connected')
   const timeSub = nc.subscribe('time')
   const pingSub = nc.subscribe('ping')
   listenSubscription(timeSub)

@@ -16,6 +16,7 @@ async function listenSubscription (sub) {
   console.log(`listening for ${sub.getSubject()} requests [uptime | stop]`)
   const sc = StringCodec()
   for await (const m of sub) {
+    console.log(sc.decode(m.data))
     if (m.respond(sc.encode(new Date().toISOString()))) {
       console.info(`[${sub.getSubject()}] handled #${sub.getProcessed()}`)
     } else {
