@@ -10,7 +10,7 @@ sc.on('connect', () => {
     .subscriptionOptions()
     .setDurableName('TEST-LISTEN')
     .setManualAckMode(true)
-  const TOPIC = 'RISK_ACCOUNT_VALIDATION_DETECTED'
+  const TOPIC = 'SEND_COMPLIANCE_EMAIL'
   const subscription = sc.subscribe(TOPIC, `${TOPIC}-TEST-LISTEN`, opts)
   subscription.on('message', msg => {
     console.log(

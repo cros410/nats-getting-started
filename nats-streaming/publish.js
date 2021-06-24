@@ -7,18 +7,26 @@ const sc = require('node-nats-streaming').connect(
 
 sc.on('connect', () => {
   // Simple Publisher (all publishes are async in the node version of the client)
-  const TOPIC = 'COMPANY_CREATED'
   // const TOPIC = 'RISK_ACCOUNT_VALIDATION_DETECTED'
+  const TOPIC = 'COMPANY_CREATED'
   const data = {
     eventId: uuidv4(),
     data: {
-      id: '5b3b8e50bb2ab8001ef92b9c',
-      ruc: '20448074162',
-      socialIdentity:
-        'PRODUCTOS ANDINOS DE CALIDAD EMPRESA INDIVIDUAL DE RESPONSABILIDAD LIMITADA',
-      customerId: '5d262b88d2fd44922ffb4fb8'
+      id: '60621a9942311be49c625806'
     }
   }
+  // const TOPIC = 'USER_REGISTER_COMPLETED'
+  // const data = {
+  //   eventId: uuidv4(),
+  //   data: {
+  //     id: '6074f09ae0212d2cd9718c7f', // cristiano
+  //     identityDocumentType: 'DNI',
+  //     // fullName: 'CHRISTIAN ANTONIO VALENCIA GUEVARA',
+  //     // identityDocumentNumber: '08553134'
+  //     fullName: 'MAURICIO VELANDIA',
+  //     identityDocumentNumber: '79506193'
+  //   }
+  // }
   sc.publish(TOPIC, JSON.stringify(data), (err, guid) => {
     if (err) {
       console.log('publish failed: ' + err)
